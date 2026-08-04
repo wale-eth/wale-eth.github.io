@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work · Ade Tokosi</title>
+<meta name="description" content="Things Ade Tokosi has shipped: FirstSeen, send-rag, pubmed-sectioner, SettleIn, and more.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="inner">
+  <nav>
+    <span class="name"><a href="index.html">Adewale Tokosi</a></span>
+    <a href="work.html" class="here">Work</a>
+    <a href="speaking.html">Speaking &amp; Writing</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<section class="fade">
+  <div class="inner work">
+    <h1>Things I've shipped</h1>
+    <p style="margin-top:18px">Each of these pairs a model metric with a production metric, because a model without operations is a demo.</p>
+
+    <h3><a href="https://wale-eth.github.io/ai-jobs-agent/">FirstSeen</a> · an agent that catches jobs the minute they exist</h3>
+    <p class="metrics">detects new postings in <b>under an hour</b> · <b>~14,000</b> live roles · runs for <b>&lt; £2/month</b></p>
+    <p>Job boards show you postings hours or days after companies publish them. FirstSeen polls 88 employers' hiring systems directly every 30 minutes, works out each ad's UK visa sponsorship stance (rules first; Claude only for the genuinely ambiguous ones), checks the employer against the Home Office sponsor register, and publishes it all to a free site. It's a LangGraph agent exposed over MCP, every LLM call traced in Langfuse, deployed as a serverless cron with CI that polls live boards before any change ships. The site's stats are computed from the agent's own public audit log, so the numbers above age well: they're live.</p>
+    <p class="visit"><a href="https://wale-eth.github.io/ai-jobs-agent/">Use it</a> <a href="https://github.com/wale-eth/ai-jobs-agent">Read the code</a></p>
+
+    <h3><a href="https://github.com/wale-eth/send-rag">send-rag</a> · answers with receipts</h3>
+    <p class="metrics">faithfulness <b>0.799</b> · recall@5 <b>0.645 &rarr; 0.710</b> · <b>4/4</b> trap questions refused</p>
+    <p>Ask a question about the UK's SEND Code of Practice and get an answer where every claim cites a document and a page. The part I care most about is the measurement loop: a 35-question golden set with corpus-verified ground truth showed that dense retrieval alone missed things statutory language makes obvious ("Section F", "20 weeks"), and that fusing in BM25 lifted recall@5 from 0.645 to 0.710. It also refused all four deliberately out-of-scope questions rather than hallucinate, which I'd argue is a grounded system's most underrated metric. Scored with ragas, judged by Claude, demoed in Streamlit.</p>
+    <p class="visit"><a href="#" id="send-rag-demo">Try it</a> <a href="https://github.com/wale-eth/send-rag">Read the code</a></p>
+
+    <h3><a href="https://github.com/wale-eth/pubmed-sectioner">pubmed-sectioner</a> · a small model taken seriously</h3>
+    <p class="metrics">P99 <b>200 ms</b> · INT8: <b>4x smaller, zero</b> accuracy loss · CI with container smoke tests</p>
+    <p>A deliberately modest model (DistilBERT, classifying sentences in medical abstracts) given the full production treatment most models never get: MLflow-tracked experiments where the transformer has to beat a TF-IDF baseline to earn its keep, INT8 quantisation, a monitored FastAPI service with Prometheus and Grafana, and a load test that produced a number I can quote with a straight face: 200 ms P99 at zero errors. The point of the project is the machinery; the model is almost incidental.</p>
+    <p class="visit"><a href="https://github.com/wale-eth/pubmed-sectioner">Read the code</a></p>
+  </div>
+</section>
+
+<div class="band fade">
+  <div class="inner">
+    <h2>Earlier &amp; ongoing</h2>
+    <ul class="plain">
+      <li><b><a href="https://github.com/wale-eth/SettleIn">SettleIn</a></b> · An AI location recommender for people moving to England: a neural network chosen over eight competing algorithms, recommending which of ten cities fits your life. My first end-to-end ML product, and still one of my favourites. <a href="https://medium.com/@nelsontokosi/settlein-using-ai-as-a-location-recommender-a13d217e2b8e">Write-up</a> · <a href="https://youtu.be/Mrx531Lm_MU">Demo video</a></li>
+      <li><b>50,000 tweets on a Nigerian election</b> · I scraped and analysed 50k tweets to measure how Nigerians felt about the 2023 presidential candidates. Sentiment analysis meets a genuinely messy real-world corpus. <a href="https://medium.com/@nelsontokosi/i-scraped-50-000-tweets-to-find-out-how-nigerians-felt-about-peter-obi-bola-tinubu-and-atiku-32a06f9c7827">Write-up</a></li>
+      <li><b>MULTILINGO-PHQ</b> · Multilingual PHQ-9 mental-health screening for African languages, with SRHIN and the ALPHA Center. In progress, and the project I care about most.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <a href="https://github.com/wale-eth">GitHub</a>
+    <a href="https://www.linkedin.com/in/adetokosi/">LinkedIn</a>
+    <a href="https://medium.com/@nelsontokosi">Medium</a>
+    <span>· Ade Tokosi</span>
+  </div>
+</footer>
+
+<script data-goatcounter="https://firstseen.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
